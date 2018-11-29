@@ -23,7 +23,11 @@
     />
     <p>
       {{ product.productCode | convertToSpaces: '-' }}:
-      {{ product.productName }}
+      <a
+        [routerLink]="['/products', product.productId]"
+        routerLinkActive="router-link-active"
+        >{{ product.productName }}</a
+      >
     </p>
     <span class="price">Price: {{ product.price | currency: 'EUR' }}</span>
     <p>

@@ -1,5 +1,15 @@
 <!-- The whole content below can be removed with the new code. -->
-<div style="text-align:center">
-  <h1>{{ title }}</h1>
-  <pm-products></pm-products>
+  <nav>
+    <a>{{ pageTitle }}</a>
+    <ul>
+      <li>
+        <a [routerLink]="['/welcome']" routerLinkActive="router-link-active"
+          >Home</a
+        >
+      </li>
+      <li><a [routerLink]="['/products']">Product List</a></li>
+    </ul>
+  </nav>
+<div>
+  <router-outlet></router-outlet>
 </div>
