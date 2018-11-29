@@ -1,0 +1,36 @@
+<p>{{ pageTitle }}</p>
+<input
+  type="text"
+  name="filterProducts"
+  id="filterProducts"
+  [(ngModel)]="listFilter"
+/>
+<p>Filtered by: {{ listFilter }}</p>
+<div *ngIf="products && products.length">
+  <p>I have products</p>
+  <input
+    type="button"
+    [value]="showImage ? 'Hide' : 'Show'"
+    (click)="toggleImage()"
+  />
+  <div *ngFor="let product of filteredProducts">
+    <img
+      [src]="product.imageUrl"
+      [title]="product.productName"
+      [style.width.px]="imageWidth"
+      [style.margin.px]="imageMargin"
+      *ngIf="showImage"
+    />
+    <p>
+      {{ product.productCode | convertToSpaces: '-' }}:
+      {{ product.productName }}
+    </p>
+    <span class="price">Price: {{ product.price | currency: 'EUR' }}</span>
+    <p>
+      <pm-star
+        [rating]="product.starRating"
+        (notify)="onNotify($event)"
+      ></pm-star>
+    </p>
+  </div>
+</div>
